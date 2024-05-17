@@ -79,31 +79,31 @@ bash_check_file="""
     if [ $? -eq 0 ];
       then
         echo "TCS File Exists";
-    else
-      echo "TCS File does not exists";
-      touch tcs.csv
-      echo "TCS File created";
-      exit 1
+      else
+        echo "TCS File does not exists";
+        touch tcs.csv
+        echo "TCS File created";
+        exit 1
     fi
     ls -l ~/airflow/dags/infosys.csv
     if [ $? -eq 0];
       then
         echo "Infosys File Exists";
-    else
-      echo "Infosys File does not exists";
-      touch infosys.csv
-      echo "Infosys file created";
-      exit 1
+      else
+        echo "Infosys File does not exists";
+        touch infosys.csv
+        echo "Infosys file created";
+        exit 1
     fi
     ls -l ~/airflow/dags/Wipro.csv
     if [$? -eq ];
       then
         echo "Wipro File Exists";
-    else
-      echo "Wipro File does not exists";
-      touch wipro.csv;
-      echo "Wipro File created:;
-      exit 1
+      else
+        echo "Wipro File does not exists";
+        touch wipro.csv;
+        echo "Wipro File created:;
+        exit 1
     fi"""
 ###
 
