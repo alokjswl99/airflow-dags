@@ -88,7 +88,7 @@ bash_check_file="""
       echo "TCS File created";
     fi
     ls -l $path2
-    if [ $? -eq 0];
+    if [ $? -eq 0 ];
     then
       echo "Infosys File Exists";
     else
@@ -97,7 +97,7 @@ bash_check_file="""
       echo "Infosys file created";
     fi
     ls -l $path3
-    if [$? -eq ];
+    if [ $? -eq ];
     then
       echo "Wipro File Exists";
     else
