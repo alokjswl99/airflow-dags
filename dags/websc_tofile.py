@@ -75,34 +75,35 @@ stock_information=PythonOperator(
         dag=dag)
 
 bash_check_file="""
-    ls -l ~/airflow/dags/tcs.csv
+    path1=~/airflow/dags/tcs.csv
+    path2=~/airflow/dags/infosys.csv
+    path3=~/airflow/dags/wipro.csv
+    ls -l $path1
     if [ $? -eq 0 ];
       then
         echo "TCS File Exists";
       else
         echo "TCS File does not exists";
-        touch tcs.csv
+        touch $path1
         echo "TCS File created";
-        exit 1
     fi
-    ls -l ~/airflow/dags/infosys.csv
+    ls -l $path2
     if [ $? -eq 0];
       then
         echo "Infosys File Exists";
       else
         echo "Infosys File does not exists";
-        touch infosys.csv
+        touch $path2
         echo "Infosys file created";
-        exit 1
     fi
-    ls -l ~/airflow/dags/Wipro.csv
+    ls -l $path3
     if [$? -eq ];
       then
         echo "Wipro File Exists";
       else
         echo "Wipro File does not exists";
-        touch wipro.csv;
-        echo "Wipro File created:;
+        touch $path3
+        echo "Wipro File created";
         exit 1
     fi"""
 ###
