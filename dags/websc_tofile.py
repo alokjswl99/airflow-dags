@@ -23,7 +23,7 @@ def main(ti):
     path=os.path.join(cwd,'dags/stocks.txt')
     file=open(path,'r').read().replace('\n','')
     arg=file.split(',')
-    print(arg)
+    #print(arg)
     ti.xcom_push(key='Stocks',value=arg)
     #return arg
 
