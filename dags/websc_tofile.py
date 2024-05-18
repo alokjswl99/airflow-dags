@@ -80,31 +80,31 @@ bash_check_file="""
     path3=~/airflow/dags/wipro.csv
     ls -l $path1
     if [ $? -eq 0 ];
-      then
-        echo "TCS File Exists";
-      else
-        echo "TCS File does not exists";
-        touch $path1
-        echo "TCS File created";
+    then
+      echo "TCS File Exists";
+    else
+      echo "TCS File does not exists";
+      touch $path1
+      echo "TCS File created";
     fi
     ls -l $path2
     if [ $? -eq 0];
-      then
-        echo "Infosys File Exists";
-      else
-        echo "Infosys File does not exists";
-        touch $path2
-        echo "Infosys file created";
+    then
+      echo "Infosys File Exists";
+    else
+      echo "Infosys File does not exists";
+      touch $path2
+      echo "Infosys file created";
     fi
     ls -l $path3
     if [$? -eq ];
-      then
-        echo "Wipro File Exists";
-      else
-        echo "Wipro File does not exists";
-        touch $path3
-        echo "Wipro File created";
-        exit 0
+    then
+      echo "Wipro File Exists";
+    else
+      echo "Wipro File does not exists";
+      touch $path3
+      echo "Wipro File created";
+      exit 0
     fi"""
 ###
 
