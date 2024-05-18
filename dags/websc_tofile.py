@@ -104,7 +104,7 @@ bash_check_file="""
         echo "Wipro File does not exists";
         touch $path3
         echo "Wipro File created";
-        exit 1
+        exit 0
     fi"""
 ###
 
