@@ -97,7 +97,7 @@ bash_check_file="""
       echo "Infosys file created";
     fi
     ls -l $path3
-    if [ $? -eq ];
+    if [ $? -eq 0 ];
     then
       echo "Wipro File Exists";
     else
