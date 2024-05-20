@@ -114,7 +114,7 @@ check_file=BashOperator(
     bash_command=bash_check_file,
     dag=dag)
 
-def write_data():
+def write_data(ti):
     data=ti.xcom_pull(task_ids='stock_information')
     path=ti.xcom_pull(task_ids='check_file')
     f=open(path,'w')
