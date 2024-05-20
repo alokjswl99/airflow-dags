@@ -119,6 +119,7 @@ check_file=BashOperator(
 
 def write_data(ti):
     data=ti.xcom_pull(task_ids='stock_information')
+    print(data)
     path=ti.xcom_pull(task_ids='check_file')
     f=open(path,'w')
     fields=data[0].keys()
