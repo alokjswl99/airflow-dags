@@ -1,5 +1,6 @@
 import os
 import sys
+import csv
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
@@ -120,7 +121,11 @@ def write_data(ti):
     data=ti.xcom_pull(task_ids='stock_information')
     path=ti.xcom_pull(task_ids='check_file')
     f=open(path,'w')
-    f.write(data)
+    fields=data[0].keys()
+    values=data[0].values()
+    writer=csv.DictWriter(f,fieldnames=fields)
+    writer.writeheader()
+    writer.writerows(data[0])
     f.close()
 
 save_data=PythonOperator(
