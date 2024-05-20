@@ -105,7 +105,8 @@ bash_check_file="""
       touch $path3
       echo "Wipro File created";
       exit 0
-    fi"""
+    fi
+    echo $path1"""
 ###
 
 check_file=BashOperator(
@@ -113,4 +114,17 @@ check_file=BashOperator(
     bash_command=bash_check_file,
     dag=dag)
 
-get_stock_names>>stock_information>>check_file
+def write_data():
+    data=ti.xcom_pull(task_ids='stock_information')
+    path=ti.xcom_pull(task_ids='check_file')
+    f=open(path,'w')
+    f.write(data)
+    f.close()
+
+save_data=PythonOperator(
+    task_id='save_data',
+    python_callable=write_data,
+    dag=dag
+)
+
+get_stock_names>>stock_information>>check_file>>save_data
