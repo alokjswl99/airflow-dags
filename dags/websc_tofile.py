@@ -35,6 +35,7 @@ get_stock_names= PythonOperator(
 def get_stock_info(ti):
     stock_symbols= ti.xcom_pull(key='Stocks',task_ids='get_stock_names')
     print(stock_symbols)
+    stock_details=[]
     for stock_symbol in stock_symbols:
         url=f"https://www.moneycontrol.com/india/stockpricequote/computers-software/{stock_symbol}"
         response=requests.get(url)
@@ -64,10 +65,11 @@ def get_stock_info(ti):
             stock_info['Dividend Yield'] = soup.find('td', class_='nsedy bsedy').text.strip()
             # Extracting other relevant information
             # Add more code to extract other information like previous close, open, volume, etc.
-            return stock_info
+            stock_details.append(stock_info)
         else:
             print("failed to retrieve data")
             return None
+    return stock_details
 
 stock_information=PythonOperator(
         task_id="stock_information",
