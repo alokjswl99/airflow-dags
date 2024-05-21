@@ -109,7 +109,7 @@ bash_check_file="""
       echo "Wipro File created";
       exit 0
     fi
-    path_list=($path1, $path2, $path3)
+    path_list=($path1,$path2,$path3)
     echo $path_list"""
 ###
 
