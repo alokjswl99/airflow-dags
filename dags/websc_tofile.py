@@ -122,6 +122,7 @@ def write_data(ti):
     data=ti.xcom_pull(task_ids='stock_information')
     print(data)
     path=ti.xcom_pull(task_ids='check_file')
+    print(path)
     for n in range(len(data)):
         f=open(path[n],'w')
         fields=data[n].keys()
