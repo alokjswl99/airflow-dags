@@ -109,7 +109,8 @@ bash_check_file="""
       echo "Wipro File created";
       exit 0
     fi
-    echo $path1"""
+    path_list=($path1, $path2, $path3)
+    echo $path_list"""
 ###
 
 check_file=BashOperator(
@@ -121,13 +122,14 @@ def write_data(ti):
     data=ti.xcom_pull(task_ids='stock_information')
     print(data)
     path=ti.xcom_pull(task_ids='check_file')
-    f=open(path,'w')
-    fields=data[0].keys()
-    values=data[0].values()
-    writer=csv.DictWriter(f,fieldnames=fields)
-    writer.writeheader()
-    writer.writerows(data)
-    f.close()
+    for n in range(len(data)):
+        f=open(path[n],'w')
+        fields=data[n].keys()
+        values=data[n].values()
+        writer=csv.DictWriter(f,fieldnames=fields)
+        writer.writeheader()
+        writer.writerows(data)
+        f.close()
 
 save_data=PythonOperator(
     task_id='save_data',
