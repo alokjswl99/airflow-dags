@@ -120,16 +120,16 @@ check_file=BashOperator(
 
 def write_data(ti):
     data=ti.xcom_pull(task_ids='stock_information')
-    print(data)
+    #print(data)
     path=ti.xcom_pull(task_ids='check_file').split(",")
-    print(path)
+    #print(path)
     for n in range(len(data)):
         f=open(path[n],'w')
         fields=data[n].keys()
         values=data[n].values()
         writer=csv.DictWriter(f,fieldnames=fields)
         writer.writeheader()
-        writer.writerows(data)
+        writer.writerows(values)
         f.close()
 
 save_data=PythonOperator(
