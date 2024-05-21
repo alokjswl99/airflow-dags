@@ -119,8 +119,10 @@ check_file=BashOperator(
     dag=dag)
 
 def write_data(ti):
-    data=ti.xcom_pull(task_ids='stock_information').split(',')
-    print(data)
+    data=ti.xcom_pull(task_ids='stock_information')
+    data1=data.split(",")
+    print(data[0])
+    print(data1)
     path=ti.xcom_pull(task_ids='check_file')
     print(path)
     for n in range(len(data)):
