@@ -16,7 +16,7 @@ dag=DAG('websc_tofile_dag',
         default_args=args,
         description="Dag for saving capture of data and pass through xcom",
         catchup=True,
-        schedule='@daily')
+        schedule='@hourly')
 
 def main(ti):
     cwd= os.getcwd()
