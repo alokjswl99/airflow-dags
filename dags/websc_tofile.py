@@ -163,4 +163,4 @@ save_on_s3=PythonOperator(
     dag=dag
 )
 
-get_stock_names>>stock_information>>check_file>>save_data
+get_stock_names>>stock_information>>check_file>>save_data>>save_on_s3
