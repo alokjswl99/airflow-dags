@@ -155,7 +155,7 @@ def s3_boto():
         bucket_list.append(bucket)
     responce=s3.meta.client.upload_file('dags/tcs.csv','airflow-files-bucket-alok','tcs.csv')
     print(bucket_list)
-    print(responce)
+    #print(responce)
 
 save_on_s3=PythonOperator(
     task_id='s3_boto',
