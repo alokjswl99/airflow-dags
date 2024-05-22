@@ -17,7 +17,7 @@ dag=DAG('websc_tofile_dag',
         default_args=args,
         description="Dag for saving capture of data and pass through xcom",
         catchup=True,
-        schedule='@hourly')
+        schedule='@daily')
 
 def main(ti):
     cwd= os.getcwd()
@@ -151,7 +151,7 @@ def s3_boto():
     session=boto3.session.Session(profile_name='default')
     s3=session.resource('s3')
     bucket_list=[]
-    for bucket in s3.buckests.all():
+    for bucket in s3.buckets.all():
         bucket_list.append(bucket)
     responce=s3.meta.client.upload_file('dags/tcs.csv','airflow-files-bucket-alok','tcs.csv')
     print(bucket_list)
