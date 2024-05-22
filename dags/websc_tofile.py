@@ -124,6 +124,13 @@ def write_data(ti):
     path=ti.xcom_pull(task_ids='check_file').split(",")
     #print(path)
     for n in range(len(data)):
+        f=open(path[n],'w')
+        if f.read()=='':
+            fields = data[n].keys()
+            writer = csv.DictWriter(f, fieldnames=fields)
+            writer.writeheader()
+        f.close()
+    for n in range(len(data)):
         f=open(path[n],'a')
         fields=data[n].keys()
         values=[data[n]]
