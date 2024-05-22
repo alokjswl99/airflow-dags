@@ -128,7 +128,7 @@ def write_data(ti):
         fields=data[n].keys()
         values=[data[n]]
         writer=csv.DictWriter(f,fieldnames=fields)
-        writer.writeheader()
+        #writer.writeheader()
         writer.writerows(values)
         f.close()
 
