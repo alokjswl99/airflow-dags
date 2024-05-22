@@ -2,6 +2,7 @@ import os
 import sys
 import csv
 import requests
+import boto3
 from bs4 import BeautifulSoup
 from datetime import datetime
 from airflow import DAG
@@ -143,6 +144,22 @@ def write_data(ti):
 save_data=PythonOperator(
     task_id='save_data',
     python_callable=write_data,
+    dag=dag
+)
+
+def s3_boto():
+    session=boto3.session.Session(profile_name='default')
+    s3=session.resource('s3')
+    bucket_list=[]
+    for bucket in s3.buckests.all():
+        bucket_list.append(bucket)
+    responce=s3.meta.client.upload_file('dags/tcs.csv','airflow-files-bucket-alok','tcs.csv')
+    print(bucket_list)
+    print(responce)
+
+save_on_s3=PythonOperator(
+    task_id='s3_boto',
+    python_callable=s3_boto,
     dag=dag
 )
 
